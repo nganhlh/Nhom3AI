@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>FPT Camera — Mentor Brief</title>
+<style>
+:root{
+  --blue:#125CC5; --navy:#163A5F; --orange:#F47721; --green:#27A36B;
+  --ink:#22384D; --muted:#6F8090; --line:#DCE5EE; --bg:#F6F9FC;
+  --soft-blue:#EFF6FF; --soft-orange:#FFF4EC; --soft-green:#EFFAF5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.5}
+.wrap{max-width:1080px;margin:auto;padding:24px 18px 60px}
+.hero{background:linear-gradient(135deg,#0B428F,#1264D2);color:white;border-radius:24px;padding:30px 32px}
+.hero .eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;opacity:.8}
+.hero h1{font-size:32px;line-height:1.15;margin:7px 0}
+.hero p{margin:0;max-width:760px;color:#E8F1FB;font-size:15px}
+.story{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:18px}
+.story span{font-size:12px;font-weight:800;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 10px;border-radius:999px}
+.story i{font-style:normal;opacity:.7}
+.section{margin-top:18px;background:white;border:1px solid var(--line);border-radius:20px;padding:24px}
+.head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.no{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:12px;background:var(--soft-blue);color:var(--blue);font-weight:900}
+h2{font-size:21px;color:var(--navy);margin:0 0 3px}
+.sub{color:var(--muted);font-size:13px}
+.big-line{font-size:17px;font-weight:800;color:#153E68;background:var(--soft-blue);padding:16px 18px;border-radius:15px}
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.step{padding:12px 8px;text-align:center;border:1px solid var(--line);background:#FAFCFE;border-radius:13px;font-size:11px;font-weight:800}
+.step b{display:block;color:var(--blue);font-size:13px;margin-bottom:3px}
+.data-intro{font-size:15px;font-weight:700;color:#324E68;margin-bottom:13px}
+.data-row{display:grid;grid-template-columns:175px 1fr 1fr;gap:10px;padding:13px 0;border-top:1px solid #E8EEF4}
+.data-row:first-of-type{border-top:0}
+.data-name{font-weight:900;color:#143B63}
+.data-name small{display:block;font-weight:600;color:var(--muted);margin-top:3px}
+.data-box{background:#FAFCFE;border:1px solid var(--line);border-radius:13px;padding:11px 12px;font-size:12px}
+.data-box strong{color:#174D83}
+.core{background:var(--soft-blue);border-color:#BFD7F0}
+.mini-kpis{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.kpi-pill{background:white;border:1px solid #C8DBEF;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900;color:#1758A0}
+.meaning{margin-top:14px;padding:13px 15px;border-radius:14px;background:#FFF9F3;border:1px solid #F7D1B2;font-size:12px;color:#75471F}
+.meaning b{color:#A14E13}
+.problems{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.p{border:1px solid var(--line);border-radius:15px;padding:14px;background:#FCFDFE}
+.p h3{font-size:14px;margin:0 0 5px;color:#173C63}
+.p p{font-size:11px;color:var(--muted);margin:0}
+.p.selected{border:2px solid var(--orange);background:var(--soft-orange)}
+.tag{font-size:9px;font-weight:900;background:var(--orange);color:white;padding:4px 7px;border-radius:999px;display:inline-block;margin-bottom:7px}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.numbox{background:#F7FAFD;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}
+.numbox b{display:block;font-size:22px;color:var(--blue)}
+.numbox span{font-size:10px;color:var(--muted)}
+.target{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px}
+.persona{background:var(--soft-blue);border:1px solid #C6DCF2;border-radius:16px;padding:16px}
+.persona .ico{font-size:35px}
+.persona b{font-size:15px;color:#124578}
+.qs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.q{border:1px solid var(--line);border-radius:13px;padding:11px;background:white}
+.q b{display:block;font-size:12px;color:#15569A}
+.q span{font-size:10px;color:var(--muted)}
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:12px}
+.j{padding:12px 7px;border:1px solid var(--line);border-radius:13px;text-align:center;font-size:10px;font-weight:800;background:#FAFCFE}
+.j.focus{background:var(--soft-orange);border:2px solid var(--orange);color:#8B4514}
+.solution-line{display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr;gap:5px;align-items:center}
+.node{min-height:82px;border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;background:#FAFCFE;display:grid;place-items:center;font-size:11px;font-weight:800}
+.node.ai{background:var(--soft-blue);border:2px solid #70A9E2;color:#0D4E96}
+.node.human{background:var(--soft-green);border-color:#B6E0CB;color:#226846}
+.arr{text-align:center;color:#98AABC;font-weight:900}
+.demo{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.demo-card{border:1px solid var(--line);border-radius:14px;padding:13px}
+.demo-card b{font-size:12px;color:#173E66}
+.checks{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.ck{padding:8px;border-radius:10px;text-align:center;font-size:10px;font-weight:900}
+.ok{background:#EAF8EF;color:#237445}.nope{background:#FFF0E9;color:#B15122}
+.value{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.v{border:1px solid var(--line);border-radius:14px;padding:13px;background:#FCFDFE}
+.v .ico{font-size:22px}
+.v b{display:block;font-size:12px;color:#173E66}
+.v span{font-size:10px;color:var(--muted)}
+.note{margin-top:12px;background:#FFF8EF;border:1px solid #F6CEA9;border-radius:13px;padding:12px 14px;font-size:11px;color:#76471E}
+@media(max-width:850px){
+ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+ .flow,.journey{grid-template-columns:repeat(2,1fr)}
+ .data-row{grid-template-columns:1fr}
+ .problems,.numbers,.target,.value,.demo{grid-template-columns:1fr}
+ .solution-line{grid-template-columns:1fr}
+ .arr{transform:rotate(90deg)}
+}
+@media(max-width:520px){
+ .wrap{padding:12px 10px 35px}.hero{padding:24px 20px}.hero h1{font-size:27px}
+ .section{padding:18px 14px}.qs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">FINAL PROJECT · AI & BIG DATA IN BUSINESS</div>
+  <h1>FPT Camera — Tóm tắt hướng làm của nhóm</h1>
+  <p>Mục tiêu của trang này là để mentor hiểu nhanh: nhóm bắt đầu từ dữ liệu nào, vì sao chọn problem này, khách hàng nào bị ảnh hưởng và AI được đề xuất để hỗ trợ ở đâu.</p>
+  <div class="story">
+    <span>Dữ liệu</span><i>→</i><span>Problem</span><i>→</i><span>Customer</span><i>→</i><span>Journey</span><i>→</i><span>AI Solution</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">01</div><div><h2>Đề bài yêu cầu gì?</h2><div class="sub">Từ một vấn đề Marketing thực tế đến một giải pháp AI có thể kiểm chứng.</div></div></div>
+  <div class="big-line">
+    Chọn <b>01 Marketing Problem thực tế</b>
+    → Xác định <b>Customer Target & Customer Journey</b>
+    → Xác định <b>AI Opportunity</b>
+    → Đề xuất <b>01 AI Solution</b>
+    → <b>Prototype / kiểm chứng bằng dữ liệu</b>
+    → Đánh giá <b>Value – Feasibility – KPI – Risk</b>
+  </div>
+  <div class="meaning"><b>Mục tiêu:</b> AI phải giải quyết được một vấn đề Marketing cụ thể, không chỉ đưa AI vào để minh họa.</div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">02</div><div><h2>Nhóm đã làm theo các bước nào?</h2><div class="sub">Đi từ dữ liệu trước, sau đó mới chọn problem và thiết kế solution.</div></div></div>
+  <div class="flow">
+    <div class="step"><b>01</b>Thu thập & làm sạch</div>
+    <div class="step"><b>02</b>Thị trường & đối thủ</div>
+    <div class="step"><b>03</b>3 Marketing Problem</div>
+    <div class="step"><b>04</b>Chọn Customer Target</div>
+    <div class="step"><b>05</b>Customer Journey</div>
+    <div class="step"><b>06</b>Thiết kế CamScore</div>
+    <div class="step"><b>07</b>Prototype & điều chỉnh</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">03</div><div><h2>Nhóm đang có những dữ liệu nào?</h2><div class="sub">Mỗi nhóm dữ liệu trả lời một câu hỏi khác nhau. Nguồn quan trọng nhất là TikTok Shop / Kalodata.</div></div></div>
+
+  <div class="data-intro">Có thể hiểu bộ dữ liệu của nhóm theo 4 câu hỏi:</div>
+
+  <div class="data-row">
+    <div class="data-name">1. Khách đang mua gì?<small>Commercial data</small></div>
+    <div class="data-box core">
+      <strong>TikTok Shop / Kalodata — FPT 12 tháng</strong>
+      <div class="mini-kpis">
+        <span class="kpi-pill">52 SKU</span>
+        <span class="kpi-pill">2.000 LIVE</span>
+        <span class="kpi-pill">635 video</span>
+        <span class="kpi-pill">259 creator</span>
+      </div>
+    </div>
+    <div class="data-box"><strong>Nhìn được:</strong> sản phẩm, đơn hàng, doanh thu quy gán, view, thời lượng, creator, và doanh thu đến từ LIVE / video / product card.</div>
+  </div>
+
+  <div class="data-row">
+    <div class="data-name">2. FPT đang khác thị trường ở đâu?<small>Competitive benchmark</small></div>
+    <div class="data-box core"><strong>Kalodata 30 ngày + 505 video camera thị trường sau bỏ trùng</strong></div>
+    <div class="data-box"><strong>Nhìn được:</strong> benchmark FPT–Imou trong cùng phạm vi, cách doanh thu phân bổ giữa LIVE / video / product card và cách thị trường làm content.</div>
+  </div>
+
+  <div class="data-row">
+    <div class="data-name">3. Khách đang tìm hiểu điều gì?<small>Search & content signals</small></div>
+    <div class="data-box"><strong>Google Trends · TikTok Search 201 nội dung · YouTube 62 video · Google Search/Shopping</strong></div>
+    <div class="data-box"><strong>Nhìn được:</strong> các chủ đề khách có khả năng quan tâm như giá, loại camera, lắp đặt, Cloud/thẻ nhớ, thương hiệu, hướng dẫn sử dụng.</div>
+  </div>
+
+  <div class="data-row">
+    <div class="data-name">4. Khách gặp vấn đề gì sau mua?<small>Voice of Customer</small></div>
+    <div class="data-box"><strong>Google Play — 120 review FPT Camera</strong><br/><strong>Meta Ads — 165 quảng cáo</strong></div>
+    <div class="data-box"><strong>Nhìn được:</strong> friction sau mua (đăng nhập, app, kết nối…) và cách FPT đang truyền thông camera qua quảng cáo / bundle Internet.</div>
+  </div>
+
+  <div class="meaning"><b>Ý nghĩa:</b> Kalodata giúp nhóm thấy <b>“chuyện gì đang xảy ra về bán hàng”</b>; các nguồn Search / Content / Review giúp nhóm hiểu thêm <b>“khách có thể đang cần gì và vì sao”</b>. Nhóm không cộng các nguồn lại thành một chỉ số chung vì khác kỳ và khác cách thu thập.</div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">04</div><div><h2>Marketing Problem từ data → nhóm chọn MP2</h2><div class="sub">Nhóm không mặc định “content kém”, mà bắt đầu từ tín hiệu bán hàng và xác định đúng phần Marketing cần nghiên cứu tiếp.</div></div></div>
+
+  <div class="problems">
+    <div class="p">
+      <h3>MP1 · Brand / Positioning</h3>
+      <p>Cloud/AI xuất hiện ở một số điểm chạm nhưng chưa đồng đều. Tuy nhiên nhóm chưa có dữ liệu nhận thức khách hàng để biết khách thực sự nhìn FPT Camera như thế nào.</p>
+    </div>
+    <div class="p selected">
+      <span class="tag">NHÓM CHỌN</span>
+      <h3>MP2 · Consideration / Conversion</h3>
+      <p>Doanh thu camera trên TikTok Shop tập trung gần như hoàn toàn ở livestream. Video và product card có rất ít doanh thu quy gán, nên vai trò của các điểm chạm này trong quá trình khách cân nhắc và mua hàng là vấn đề cần làm rõ.</p>
+    </div>
+    <div class="p">
+      <h3>MP3 · CX / Trust</h3>
+      <p>Review sau mua cho thấy friction về app, đăng nhập và kết nối. Đây là vấn đề quan trọng nhưng nguyên nhân gốc nghiêng về Product/Technical hơn Marketing.</p>
+    </div>
+  </div>
+
+  <div class="numbers">
+    <div class="numbox"><b>1,71 tỷ ₫</b><span>doanh thu camera quy gán / 12 tháng</span></div>
+    <div class="numbox"><b>97,7%</b><span>doanh thu camera quy gán cho LIVE</span></div>
+    <div class="numbox"><b>3 / 179</b><span>video gắn camera có ≥1 đơn</span></div>
+  </div>
+
+  <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="data-box core">
+      <strong>Dữ liệu đang cho thấy gì?</strong><br/>
+      Camera là nhóm đóng góp lớn trong gian hàng TikTok Shop FPT, nhưng kết quả bán hàng đang tập trung mạnh ở <b>livestream</b>. Trong cùng danh sách 30 ngày, cơ cấu của Imou phân bổ rộng hơn qua LIVE, video và product card.
+    </div>
+    <div class="data-box">
+      <strong>Dữ liệu chưa cho phép kết luận gì?</strong><br/>
+      Chưa thể nói nguyên nhân là <b>video FPT kém</b>, <b>thiếu reach</b> hay FPT đang <b>phụ thuộc livestream</b>. Nhóm cũng chưa có conversion tracking xuyên kênh, và cách Kalodata quy gán doanh thu theo điểm chạm chưa được kiểm chứng.
+    </div>
+  </div>
+
+  <div class="meaning">
+    <b>Problem Statement nhóm chọn:</b> Ngoài livestream, <b>video và product card đang đóng vai trò như thế nào trong việc giúp khách cân nhắc và đi đến mua FPT Camera?</b> Đây là điểm nhóm muốn cải thiện ở góc độ Marketing: nội dung ngoài livestream có đang trả lời đủ thông tin khách cần trước khi mua hay không.
+  </div>
+
+  <div class="meaning" style="background:#F4FAF6;border-color:#C9E7D4;color:#345F46">
+    <b>Vì sao chọn MP2?</b> Đây là problem có bằng chứng định lượng rõ nhất, có benchmark FPT–Imou trong cùng phạm vi và có dữ liệu kết quả để tiếp tục thiết kế / kiểm chứng giải pháp AI.
+  </div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">05</div><div><h2>Customer Target là ai?</h2><div class="sub">Nhóm không tự tạo persona nhân khẩu học; target được khoanh từ nhóm có hành vi mua trong dữ liệu.</div></div></div>
+  <div class="target">
+    <div class="persona">
+      <div class="ico">🏠 📷</div>
+      <div class="sub">TARGET</div>
+      <b>Người mua camera an ninh Wi-Fi cho hộ gia đình, đang tìm hiểu và đặt mua qua TikTok / TikTok Shop.</b>
+    </div>
+    <div class="qs">
+      <div class="q"><b>Q1 · Cấu hình</b><span>Đơn hay combo? Bao nhiêu camera? Trong/ngoài trời?</span></div>
+      <div class="q"><b>Q2 · Chi phí & lưu trữ</b><span>Giá? Cloud hay thẻ nhớ? Có phí sau mua?</span></div>
+      <div class="q"><b>Q3 · Lắp đặt & cài đặt</b><span>Ai lắp? Tự cài được không?</span></div>
+      <div class="q"><b>Q4 · Tin cậy</b><span>Bảo hành? Chính hãng? Review?</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">06</div><div><h2>Customer Journey Map</h2><div class="sub">Problem của nhóm tập trung ở đoạn khách đang so sánh, cân nhắc và ra quyết định mua.</div></div></div>
+
+  <div class="journey">
+    <div class="j">1<br/>Phát sinh nhu cầu</div>
+    <div class="j">2<br/>Tìm hiểu</div>
+    <div class="j focus">3<br/>So sánh & cân nhắc</div>
+    <div class="j focus">4<br/>Quyết định & đặt mua</div>
+    <div class="j">5<br/>Lắp đặt & kích hoạt</div>
+    <div class="j">6<br/>Sử dụng & sau mua</div>
+  </div>
+  <div class="meaning"><b>Khoảng trống nhóm muốn xử lý:</b> ở giai đoạn 3–4, khách cần được trả lời Q1–Q4, nhưng nhiều nội dung hiện tại chưa chắc đã cung cấp đủ những thông tin này.</div>
+</section>
+
+<section class="section">
+  <div class="head"><div class="no">07</div><div><h2>Giải pháp AI — CamScore</h2><div class="sub">Một công cụ nội bộ giúp team Content kiểm tra nội dung trước khi đăng.</div></div></div>
+
+  <div class="solution-line">
+    <div class="node">✍️<br/>Nội dung dự kiến</div>
+    <div class="arr">→</div>
+    <div class="node ai">🤖<br/>AI đọc nội dung và kiểm tra Q1–Q4</div>
+    <div class="arr">→</div>
+    <div class="node">🔍<br/>Chỉ ra nội dung còn thiếu</div>
+    <div class="arr">→</div>
+    <div class="node human">✅<br/>Content team chỉnh & người thật duyệt</div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-card">
+      <b>Ví dụ kết quả CamScore</b>
+      <div class="checks">
+        <div class="ck ok">Q1 ✓</div>
+        <div class="ck nope">Q2 ✕</div>
+        <div class="ck ok">Q3 ✓</div>
+        <div class="ck nope">Q4 ✕</div>
+      </div>
+    </div>
+    <div class="demo-card">
+      <b>Team sẽ hiểu gì?</b>
+      <div class="sub" style="margin-top:6px">Video đã nói về cấu hình và lắp đặt, nhưng còn thiếu thông tin về <b>chi phí/lưu trữ</b> và <b>độ tin cậy</b> trước khi đăng.</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+</div>
+</body>
+</html>
